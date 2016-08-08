@@ -43,24 +43,40 @@ public class ButtonBarView: UICollectionView {
         let bar  = UIView(frame: CGRectMake(0, self.frame.size.height - CGFloat(self.selectedBarHeight), 0, CGFloat(self.selectedBarHeight)))
         bar.layer.zPosition = 9999
         return bar
-    }()
+        }()
+    
+    public lazy var selectedBarArrow: TriangleView = { [unowned self] in
+        let arrow = TriangleView(frame: CGRectMake(0, 0, 0, self.selectedBarArrowSize.height))
+        arrow.backgroundColor = UIColor(red: 1, green: 162/255, blue: 0, alpha: 1)
+        arrow.layer.zPosition = 10000
+        return arrow
+        }()
     
     internal var selectedBarHeight: CGFloat = 4 {
         didSet {
             self.updateSlectedBarYPosition()
         }
     }
+    
+    internal var selectedBarArrowSize: CGSize = CGSize(width: 0, height: 0) {
+        didSet {
+            self.updateSlectedBarYPosition()
+        }
+    }
+    
     var selectedBarAlignment: SelectedBarAlignment = .Center
     var selectedIndex = 0
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addSubview(selectedBar)
+        addSubview(selectedBarArrow)
     }
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         addSubview(selectedBar)
+        addSubview(selectedBarArrow)
     }
     
     public func moveToIndex(toIndex: Int, animated: Bool, swipeDirection: SwipeDirection, pagerScroll: PagerScroll) {
@@ -96,6 +112,7 @@ public class ButtonBarView: UICollectionView {
         targetFrame.origin.x += (toFrame.origin.x - fromFrame.origin.x) * progressPercentage
         
         selectedBar.frame = CGRectMake(targetFrame.origin.x, selectedBar.frame.origin.y, targetFrame.size.width, selectedBar.frame.size.height)
+        selectedBarArrow.frame = CGRectMake(targetFrame.origin.x + (targetFrame.size.width - self.selectedBarArrowSize.width)/2, selectedBarArrow.frame.origin.y, self.selectedBarArrowSize.width, self.selectedBarArrowSize.height)
         
         var targetContentOffset: CGFloat = 0.0
         if contentSize.width > frame.size.width {
@@ -111,6 +128,7 @@ public class ButtonBarView: UICollectionView {
     
     public func updateSelectedBarPosition(animated: Bool, swipeDirection: SwipeDirection, pagerScroll: PagerScroll) -> Void {
         var selectedBarFrame = selectedBar.frame
+        var selectedBarArrowFrame = selectedBarArrow.frame
         
         let selectedCellIndexPath = NSIndexPath(forItem: selectedIndex, inSection: 0)
         let attributes = layoutAttributesForItemAtIndexPath(selectedCellIndexPath)
@@ -121,13 +139,17 @@ public class ButtonBarView: UICollectionView {
         selectedBarFrame.size.width = selectedCellFrame.size.width
         selectedBarFrame.origin.x = selectedCellFrame.origin.x
         
+        selectedBarArrowFrame.origin.x = selectedBarFrame.origin.x + (selectedBarFrame.size.width - self.selectedBarArrowSize.width)/2
+        
         if animated {
             UIView.animateWithDuration(0.3, animations: { [weak self] in
                 self?.selectedBar.frame = selectedBarFrame
-            })
+                self?.selectedBarArrow.frame = selectedBarArrowFrame
+                })
         }
         else {
             selectedBar.frame = selectedBarFrame
+            selectedBarArrow.frame = selectedBarArrowFrame
         }
     }
     
@@ -170,5 +192,10 @@ public class ButtonBarView: UICollectionView {
         selectedBarFrame.origin.y = frame.size.height - selectedBarHeight
         selectedBarFrame.size.height = selectedBarHeight
         selectedBar.frame = selectedBarFrame
+        
+        var selectedBarArrowFrame = selectedBarArrow.frame
+        selectedBarArrowFrame.origin.y = frame.size.height - selectedBarHeight - self.selectedBarArrowSize.height
+        selectedBarArrowFrame.size.height = self.selectedBarArrowSize.height
+        selectedBarArrow.frame = selectedBarArrowFrame
     }
 }
