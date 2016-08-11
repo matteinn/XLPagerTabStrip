@@ -48,6 +48,7 @@ public struct ButtonBarPagerTabStripSettings {
         public var buttonBarLeftContentInset: CGFloat?
         public var buttonBarRightContentInset: CGFloat?
 
+        public var selectedBarTrackColor = UIColor.clear
         public var selectedBarBackgroundColor = UIColor.black
         public var selectedBarFullWidth = false
         public var selectedBarHeight: CGFloat = 5
@@ -156,6 +157,7 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
 
         buttonBarView.showsHorizontalScrollIndicator = false
         buttonBarView.backgroundColor = settings.style.buttonBarBackgroundColor ?? buttonBarView.backgroundColor
+        buttonBarView.selectedBarTrack.backgroundColor = settings.style.selectedBarTrackColor
         buttonBarView.selectedBar.backgroundColor = settings.style.selectedBarBackgroundColor
         buttonBarView.bounces = settings.style.buttonBarBounces
 
@@ -266,11 +268,11 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
 
         if reload {
             let indexPathsToReload = cells.enumerated()
-                .flatMap { (arg) -> IndexPath? in
+                .compactMap { (arg) -> IndexPath? in
                     let (index, cell) = arg
                     return cell == nil ? indexPaths[index] : nil
                 }
-                .flatMap { (indexPath: IndexPath) -> IndexPath? in
+                .compactMap { (indexPath: IndexPath) -> IndexPath? in
                     return (indexPath.item >= 0 && indexPath.item < buttonBarView.numberOfItems(inSection: indexPath.section)) ? indexPath : nil
                 }
 

@@ -87,6 +87,7 @@ open class BaseButtonBarPagerTabStripViewController<ButtonBarCellType: UICollect
         buttonBarView.showsHorizontalScrollIndicator = false
         buttonBarView.backgroundColor = settings.style.buttonBarBackgroundColor ?? buttonBarView.backgroundColor
         buttonBarView.selectedBar.backgroundColor = settings.style.selectedBarBackgroundColor
+        buttonBarView.selectedBar.backgroundColor = settings.style.selectedBarTrackColor
 
         buttonBarView.selectedBarHeight = settings.style.selectedBarHeight
         // register button bar item cell

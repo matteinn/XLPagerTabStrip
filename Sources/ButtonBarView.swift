@@ -45,6 +45,13 @@ public enum SelectedBarVerticalAlignment {
 
 open class ButtonBarView: UICollectionView {
 
+    open lazy var selectedBarTrack: UIView = { [unowned self] in
+        let bar  = UIView(frame: CGRect(x: 0, y: self.frame.size.height - CGFloat(self.selectedBarHeight), width: self.bounds.size.width, height: CGFloat(self.selectedBarHeight)))
+        bar.backgroundColor = self.selectedBarTrackColor
+        bar.layer.zPosition = 9998
+        return bar
+        }()
+    
     open lazy var selectedBar: UIView = { [unowned self] in
         let bar  = UIView(frame: CGRect(x: 0, y: self.frame.size.height - CGFloat(self.selectedBarHeight), width: 0, height: CGFloat(self.selectedBarHeight)))
         bar.layer.zPosition = 9999
@@ -78,16 +85,24 @@ open class ButtonBarView: UICollectionView {
         }
     }
     
+    internal var selectedBarTrackColor: UIColor = .clear {
+        didSet {
+            self.updateSelectedBarYPosition()
+        }
+    }
+    
     var selectedIndex = 0
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        addSubview(selectedBarTrack)
         addSubview(selectedBar)
         addSubview(selectedBarArrow)
     }
 
     public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
+        addSubview(selectedBarTrack)
         addSubview(selectedBar)
         addSubview(selectedBarArrow)
     }
@@ -225,6 +240,8 @@ open class ButtonBarView: UICollectionView {
             selectedBarFrame.origin.y = frame.size.height - selectedBarHeight
         }
 
+        selectedBarTrack.frame = CGRect(x: 0, y: frame.size.height - selectedBarHeight, width: self.contentSize.width, height: selectedBarHeight)
+        
         selectedBarFrame.size.height = selectedBarHeight
         selectedBarFrame.size.width = selectedBarFullWidth ? self.contentSize.width : selectedBarFrame.size.width
         selectedBar.frame = selectedBarFrame
