@@ -120,7 +120,7 @@ public class ButtonBarView: UICollectionView {
         selectedBar.frame = CGRectMake(
             selectedBarFullWidth ? 0 : targetFrame.origin.x,
             selectedBar.frame.origin.y,
-            selectedBarFullWidth ? frame.size.width : targetFrame.size.width,
+            selectedBarFullWidth ? self.contentSize.width : targetFrame.size.width,
             selectedBar.frame.size.height)
         
         selectedBarArrow.frame = CGRectMake(
@@ -151,7 +151,7 @@ public class ButtonBarView: UICollectionView {
         
         updateContentOffset(animated, pagerScroll: pagerScroll, toFrame: selectedCellFrame, toIndex: selectedCellIndexPath.row)
         
-        selectedBarFrame.size.width = selectedBarFullWidth ? frame.size.width : selectedCellFrame.size.width
+        selectedBarFrame.size.width = selectedBarFullWidth ? self.contentSize.width : selectedCellFrame.size.width
         selectedBarFrame.origin.x = selectedBarFullWidth ? 0 : selectedCellFrame.origin.x
         
         selectedBarArrowFrame.origin.x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.selectedBarArrowSize.width)/2
@@ -206,7 +206,7 @@ public class ButtonBarView: UICollectionView {
         var selectedBarFrame = selectedBar.frame
         selectedBarFrame.origin.y = frame.size.height - selectedBarHeight
         selectedBarFrame.size.height = selectedBarHeight
-        selectedBarFrame.size.width = selectedBarFullWidth ? frame.size.width : selectedBarFrame.size.width
+        selectedBarFrame.size.width = selectedBarFullWidth ? self.contentSize.width : selectedBarFrame.size.width
         selectedBar.frame = selectedBarFrame
         
         var selectedBarArrowFrame = selectedBarArrow.frame
