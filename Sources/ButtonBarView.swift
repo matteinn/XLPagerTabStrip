@@ -64,6 +64,12 @@ public class ButtonBarView: UICollectionView {
         }
     }
     
+    internal var selectedBarFullWidth: Bool = false {
+        didSet {
+            self.updateSlectedBarYPosition()
+        }
+    }
+    
     var selectedBarAlignment: SelectedBarAlignment = .Center
     var selectedIndex = 0
     
@@ -111,8 +117,17 @@ public class ButtonBarView: UICollectionView {
         targetFrame.size.width += (toFrame.size.width - fromFrame.size.width) * progressPercentage
         targetFrame.origin.x += (toFrame.origin.x - fromFrame.origin.x) * progressPercentage
         
-        selectedBar.frame = CGRectMake(targetFrame.origin.x, selectedBar.frame.origin.y, targetFrame.size.width, selectedBar.frame.size.height)
-        selectedBarArrow.frame = CGRectMake(targetFrame.origin.x + (targetFrame.size.width - self.selectedBarArrowSize.width)/2, selectedBarArrow.frame.origin.y, self.selectedBarArrowSize.width, self.selectedBarArrowSize.height)
+        selectedBar.frame = CGRectMake(
+            selectedBarFullWidth ? 0 : targetFrame.origin.x,
+            selectedBar.frame.origin.y,
+            selectedBarFullWidth ? frame.size.width : targetFrame.size.width,
+            selectedBar.frame.size.height)
+        
+        selectedBarArrow.frame = CGRectMake(
+            targetFrame.origin.x + (targetFrame.size.width - self.selectedBarArrowSize.width)/2,
+            selectedBarArrow.frame.origin.y,
+            self.selectedBarArrowSize.width,
+            self.selectedBarArrowSize.height)
         
         var targetContentOffset: CGFloat = 0.0
         if contentSize.width > frame.size.width {
@@ -136,10 +151,10 @@ public class ButtonBarView: UICollectionView {
         
         updateContentOffset(animated, pagerScroll: pagerScroll, toFrame: selectedCellFrame, toIndex: selectedCellIndexPath.row)
         
-        selectedBarFrame.size.width = selectedCellFrame.size.width
-        selectedBarFrame.origin.x = selectedCellFrame.origin.x
+        selectedBarFrame.size.width = selectedBarFullWidth ? frame.size.width : selectedCellFrame.size.width
+        selectedBarFrame.origin.x = selectedBarFullWidth ? 0 : selectedCellFrame.origin.x
         
-        selectedBarArrowFrame.origin.x = selectedBarFrame.origin.x + (selectedBarFrame.size.width - self.selectedBarArrowSize.width)/2
+        selectedBarArrowFrame.origin.x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.selectedBarArrowSize.width)/2
         
         if animated {
             UIView.animateWithDuration(0.3, animations: { [weak self] in
@@ -191,6 +206,7 @@ public class ButtonBarView: UICollectionView {
         var selectedBarFrame = selectedBar.frame
         selectedBarFrame.origin.y = frame.size.height - selectedBarHeight
         selectedBarFrame.size.height = selectedBarHeight
+        selectedBarFrame.size.width = selectedBarFullWidth ? frame.size.width : selectedBarFrame.size.width
         selectedBar.frame = selectedBarFrame
         
         var selectedBarArrowFrame = selectedBarArrow.frame

@@ -49,6 +49,7 @@ public struct ButtonBarPagerTabStripSettings {
         public var buttonBarRightContentInset: CGFloat?
 
         public var selectedBarBackgroundColor = UIColor.blackColor()
+        public var selectedBarFullWidth = false
         public var selectedBarHeight: CGFloat = 5
         public var selectedBarArrowSize: CGSize = CGSize(width: 0, height: 0)
         
@@ -139,6 +140,7 @@ public class ButtonBarPagerTabStripViewController: PagerTabStripViewController, 
         
         buttonBarView.selectedBarHeight = settings.style.selectedBarHeight ?? buttonBarView.selectedBarHeight
         buttonBarView.selectedBarArrowSize = settings.style.selectedBarArrowSize
+        buttonBarView.selectedBarFullWidth = settings.style.selectedBarFullWidth
         // register button bar item cell
         switch buttonBarItemSpec {
         case .NibFile(let nibName, let bundle, _):
