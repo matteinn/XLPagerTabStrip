@@ -55,6 +55,7 @@ public struct ButtonBarPagerTabStripSettings {
         
         public var buttonBarItemBackgroundColor: UIColor?
         public var buttonBarItemFont = UIFont.systemFontOfSize(18)
+        public var buttonBarItemKerning: CGFloat?
         public var buttonBarItemLeftRightMargin: CGFloat = 8
         public var buttonBarItemTitleColor: UIColor?
         public var buttonBarItemsShouldFillAvailiableWidth = true
@@ -277,7 +278,15 @@ public class ButtonBarPagerTabStripViewController: PagerTabStripViewController, 
         let childController = viewControllers[indexPath.item] as! IndicatorInfoProvider
         let indicatorInfo = childController.indicatorInfoForPagerTabStrip(self)
         
-        cell.label.text = indicatorInfo.title
+        if let kerning = settings.style.buttonBarItemKerning {
+            let attributedText = NSMutableAttributedString(string: indicatorInfo.title)
+            let range = NSMakeRange(0, attributedText.length)
+            attributedText.addAttribute(NSKernAttributeName, value: NSNumber(float: Float(kerning)), range: range)
+            cell.label.attributedText = attributedText
+        } else {
+            cell.label.text = indicatorInfo.title
+        }
+        
         cell.label.font = settings.style.buttonBarItemFont ?? cell.label.font
         cell.label.textColor = settings.style.buttonBarItemTitleColor ?? cell.label.textColor
         cell.contentView.backgroundColor = settings.style.buttonBarItemBackgroundColor ?? cell.contentView.backgroundColor
