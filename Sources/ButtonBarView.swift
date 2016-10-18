@@ -151,7 +151,7 @@ open class ButtonBarView: UICollectionView {
         
         updateContentOffset(animated: animated, pagerScroll: pagerScroll, toFrame: selectedCellFrame, toIndex: (selectedCellIndexPath as NSIndexPath).row)
         
-        selectedBarFrame.size.width = selectedBarFullWidth ? frame.size.width : selectedCellFrame.size.width
+        selectedBarFrame.size.width = selectedBarFullWidth ? self.contentSize.width : selectedCellFrame.size.width
         selectedBarFrame.origin.x = selectedBarFullWidth ? 0 : selectedCellFrame.origin.x
         
         selectedBarArrowFrame.origin.x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.selectedBarArrowSize.width)/2
