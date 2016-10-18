@@ -9,19 +9,19 @@
 import Foundation
 
 public class TriangleView: UIView {
-
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
         
         let path = UIBezierPath()
-        path.moveToPoint(CGPointMake(0, self.bounds.size.height))
-        path.addLineToPoint(CGPointMake(self.bounds.size.width, self.bounds.size.height))
-        path.addLineToPoint(CGPointMake(self.bounds.size.width/2, 0))
-        path.addLineToPoint(CGPointMake(0, self.bounds.size.height))
-        path.closePath()
+        path.move(to: CGPoint(x: 0, y: self.bounds.size.height))
+        path.addLine(to: CGPoint(x: self.bounds.size.width, y: self.bounds.size.height))
+        path.addLine(to: CGPoint(x: self.bounds.size.width/2, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: self.bounds.size.height))
+        path.close()
         
         let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.CGPath
+        shapeLayer.path = path.cgPath
         
         self.layer.mask = shapeLayer
     }
