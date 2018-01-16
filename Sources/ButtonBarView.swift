@@ -72,6 +72,12 @@ open class ButtonBarView: UICollectionView {
         }
     }
     
+    internal var selectedBarFullWidth: Bool = false {
+        didSet {
+            self.updateSelectedBarYPosition()
+        }
+    }
+    
     var selectedIndex = 0
 
     required public init?(coder aDecoder: NSCoder) {
@@ -119,6 +125,18 @@ open class ButtonBarView: UICollectionView {
         selectedBar.frame = CGRect(x: targetFrame.origin.x, y: selectedBar.frame.origin.y, width: targetFrame.size.width, height: selectedBar.frame.size.height)
         selectedBarArrow.frame = CGRect(x: targetFrame.origin.x + (targetFrame.size.width - self.selectedBarArrowSize.width)/2, y: selectedBarArrow.frame.origin.y, width: self.selectedBarArrowSize.width, height: self.selectedBarArrowSize.height)
         
+        selectedBar.frame = CGRect(
+            x: selectedBarFullWidth ? 0 : targetFrame.origin.x,
+            y: selectedBar.frame.origin.y,
+            width: selectedBarFullWidth ? frame.size.width : targetFrame.size.width,
+            height: selectedBar.frame.size.height)
+        
+        selectedBarArrow.frame = CGRect(
+            x: targetFrame.origin.x + (targetFrame.size.width - self.selectedBarArrowSize.width)/2,
+            y: selectedBarArrow.frame.origin.y,
+            width: self.selectedBarArrowSize.width,
+            height: self.selectedBarArrowSize.height)
+        
         var targetContentOffset: CGFloat = 0.0
         if contentSize.width > frame.size.width {
             let toContentOffset = contentOffsetForCell(withFrame: toFrame, andIndex: toIndex)
@@ -137,13 +155,13 @@ open class ButtonBarView: UICollectionView {
         let selectedCellIndexPath = IndexPath(item: selectedIndex, section: 0)
         let attributes = layoutAttributesForItem(at: selectedCellIndexPath)
         let selectedCellFrame = attributes!.frame
-
-        updateContentOffset(animated: animated, pagerScroll: pagerScroll, toFrame: selectedCellFrame, toIndex: (selectedCellIndexPath as NSIndexPath).row)
-
-        selectedBarFrame.size.width = selectedCellFrame.size.width
-        selectedBarFrame.origin.x = selectedCellFrame.origin.x
         
-        selectedBarArrowFrame.origin.x = selectedBarFrame.origin.x + (selectedBarFrame.size.width - self.selectedBarArrowSize.width)/2
+        updateContentOffset(animated: animated, pagerScroll: pagerScroll, toFrame: selectedCellFrame, toIndex: selectedCellIndexPath.row)
+        
+        selectedBarFrame.size.width = selectedBarFullWidth ? frame.size.width : selectedCellFrame.size.width
+        selectedBarFrame.origin.x = selectedBarFullWidth ? 0 : selectedCellFrame.origin.x
+        
+        selectedBarArrowFrame.origin.x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.selectedBarArrowSize.width)/2
         
         if animated {
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
@@ -204,6 +222,7 @@ open class ButtonBarView: UICollectionView {
         }
 
         selectedBarFrame.size.height = selectedBarHeight
+        selectedBarFrame.size.width = selectedBarFullWidth ? frame.size.width : selectedBarFrame.size.width
         selectedBar.frame = selectedBarFrame
         
         var selectedBarArrowFrame = selectedBarArrow.frame
