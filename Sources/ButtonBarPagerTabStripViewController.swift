@@ -55,6 +55,7 @@ public struct ButtonBarPagerTabStripSettings {
         
         public var buttonBarItemBackgroundColor: UIColor?
         public var buttonBarItemFont = UIFont.systemFont(ofSize: 18)
+        public var buttonBarItemKerning: CGFloat?
         public var buttonBarItemLeftRightMargin: CGFloat = 8
         public var buttonBarItemTitleColor: UIColor?
         @available(*, deprecated: 7.0.0) public var buttonBarItemsShouldFillAvailiableWidth: Bool {
@@ -329,7 +330,16 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
         let childController = viewControllers[indexPath.item] as! IndicatorInfoProvider // swiftlint:disable:this force_cast
         let indicatorInfo = childController.indicatorInfo(for: self)
 
-        cell.label.text = indicatorInfo.title
+        
+        if let kerning = settings.style.buttonBarItemKerning {
+            let attributedText = NSMutableAttributedString(string: indicatorInfo.title ?? "")
+            let range = NSMakeRange(0, attributedText.length)
+            attributedText.addAttribute(NSAttributedStringKey.kern, value: NSNumber(value: Float(kerning)), range: range)
+            cell.label.attributedText = attributedText
+        } else {
+            cell.label.text = indicatorInfo.title
+        }
+        
         cell.label.font = settings.style.buttonBarItemFont
         cell.label.textColor = settings.style.buttonBarItemTitleColor ?? cell.label.textColor
         cell.contentView.backgroundColor = settings.style.buttonBarItemBackgroundColor ?? cell.contentView.backgroundColor
