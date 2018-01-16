@@ -145,7 +145,9 @@ open class ButtonBarView: UICollectionView {
             targetContentOffset = fromContentOffset + ((toContentOffset - fromContentOffset) * progressPercentage)
         }
 
-        setContentOffset(CGPoint(x: targetContentOffset, y: 0), animated: false)
+        DispatchQueue.main.async{
+            self.setContentOffset(CGPoint(x: targetContentOffset, y: 0), animated: false)
+        }
     }
 
     open func updateSelectedBarPosition(_ animated: Bool, swipeDirection: SwipeDirection, pagerScroll: PagerScroll) {
@@ -180,7 +182,9 @@ open class ButtonBarView: UICollectionView {
     private func updateContentOffset(animated: Bool, pagerScroll: PagerScroll, toFrame: CGRect, toIndex: Int) {
         guard pagerScroll != .no || (pagerScroll != .scrollOnlyIfOutOfScreen && (toFrame.origin.x < contentOffset.x || toFrame.origin.x >= (contentOffset.x + frame.size.width - contentInset.left))) else { return }
         let targetContentOffset = contentSize.width > frame.size.width ? contentOffsetForCell(withFrame: toFrame, andIndex: toIndex) : 0
-        setContentOffset(CGPoint(x: targetContentOffset, y: 0), animated: animated)
+        DispatchQueue.main.async{
+            self.setContentOffset(CGPoint(x: targetContentOffset, y: 0), animated: animated)
+        }
     }
 
     private func contentOffsetForCell(withFrame cellFrame: CGRect, andIndex index: Int) -> CGFloat {
