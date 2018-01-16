@@ -15,7 +15,7 @@
 		28E098C01C5003130083B788 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E098BF1C5003130083B788 /* SwipeDirection.swift */; };
 		28F828811C494B2C00330CF4 /* XLPagerTabStrip.h in Headers */ = {isa = PBXBuildFile; fileRef = 28F828801C494B2C00330CF4 /* XLPagerTabStrip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		28F828881C494B2C00330CF4 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F8287D1C494B2C00330CF4 /* XLPagerTabStrip.framework */; };
-		95B6C0F71DB64A3300FC2C87 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6C0F61DB64A3300FC2C87 /* TriangleView.swift */; };
+		9558DF2E1D58D6F300BF063B /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9558DF2D1D58D6F300BF063B /* TriangleView.swift */; };
 		CB0986C41C51391600DF7087 /* ButtonBarPagerTabStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0986C31C51391600DF7087 /* ButtonBarPagerTabStripViewController.swift */; };
 		CB0986C61C51395E00DF7087 /* ButtonBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0986C51C51395E00DF7087 /* ButtonBarView.swift */; };
 		CB0986C81C5158A000DF7087 /* ButtonBarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0986C71C5158A000DF7087 /* ButtonBarViewCell.swift */; };
@@ -52,7 +52,7 @@
 		28F828871C494B2C00330CF4 /* XLPagerTabStripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XLPagerTabStripTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F8288E1C494B2C00330CF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Tests/Info.plist; sourceTree = "<group>"; };
 		28F8289B1C494BF100330CF4 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
-		95B6C0F61DB64A3300FC2C87 /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		9558DF2D1D58D6F300BF063B /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		CB0986C31C51391600DF7087 /* ButtonBarPagerTabStripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBarPagerTabStripViewController.swift; sourceTree = "<group>"; };
 		CB0986C51C51395E00DF7087 /* ButtonBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBarView.swift; sourceTree = "<group>"; };
 		CB0986C71C5158A000DF7087 /* ButtonBarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBarViewCell.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		CB71C6ED1C4EB988008EC806 /* SegmentedPagerTabStripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedPagerTabStripViewController.swift; sourceTree = "<group>"; };
 		CB7D614A1C529B9500A957BA /* FXPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXPageControl.h; sourceTree = "<group>"; };
 		CB7D614B1C529B9500A957BA /* FXPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXPageControl.m; sourceTree = "<group>"; };
-		CB86ED6A1C4D6E6C00DA463B /* PagerTabStripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PagerTabStripViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		CB86ED6A1C4D6E6C00DA463B /* PagerTabStripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PagerTabStripViewController.swift; sourceTree = "<group>"; };
 		CBA0A1FA1C502DA300C5748C /* BarPagerTabStripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarPagerTabStripViewController.swift; sourceTree = "<group>"; };
 		CBA0A1FB1C502DA300C5748C /* BarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		CBBD43611C527E80001A748E /* TwitterPagerTabStripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterPagerTabStripViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +93,6 @@
 				CBA0A1FB1C502DA300C5748C /* BarView.swift */,
 				CB0986C51C51395E00DF7087 /* ButtonBarView.swift */,
 				CB0986C71C5158A000DF7087 /* ButtonBarViewCell.swift */,
-				95B6C0F61DB64A3300FC2C87 /* TriangleView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -159,6 +158,7 @@
 				28E098BF1C5003130083B788 /* SwipeDirection.swift */,
 				281BFDC01C511C420090C26F /* IndicatorInfo.swift */,
 				281BFDC21C511F120090C26F /* PagerTabStripBehaviour.swift */,
+				9558DF2D1D58D6F300BF063B /* TriangleView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -195,6 +195,7 @@
 				28F828791C494B2C00330CF4 /* Frameworks */,
 				28F8287A1C494B2C00330CF4 /* Headers */,
 				28F8287B1C494B2C00330CF4 /* Resources */,
+				CB25B8F81EBCF0CE00FEB0A2 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -230,11 +231,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				TargetAttributes = {
 					28F8287C1C494B2C00330CF4 = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 					28F828861C494B2C00330CF4 = {
 						CreatedOnToolsVersion = 7.2;
@@ -278,6 +279,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CB25B8F81EBCF0CE00FEB0A2 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		28F828781C494B2C00330CF4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -293,7 +311,7 @@
 				CB71C6EE1C4EB988008EC806 /* SegmentedPagerTabStripViewController.swift in Sources */,
 				28E098BE1C5002D90083B788 /* PagerTabStripError.swift in Sources */,
 				281BFDC11C511C420090C26F /* IndicatorInfo.swift in Sources */,
-				95B6C0F71DB64A3300FC2C87 /* TriangleView.swift in Sources */,
+				9558DF2E1D58D6F300BF063B /* TriangleView.swift in Sources */,
 				CB86ED6B1C4D6E6C00DA463B /* PagerTabStripViewController.swift in Sources */,
 				28E098C01C5003130083B788 /* SwipeDirection.swift in Sources */,
 				CB0986C81C5158A000DF7087 /* ButtonBarViewCell.swift in Sources */,
@@ -328,14 +346,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -359,12 +383,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -379,14 +403,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -404,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -420,6 +450,7 @@
 			buildSettings = {
 				BITCODE_GENERATION_MODE = marker;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -430,7 +461,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xmartlabs.XLPagerTabStrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -439,6 +471,7 @@
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -449,7 +482,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xmartlabs.XLPagerTabStrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -462,7 +496,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xmartlabs.XLPagerTabStripTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -474,7 +508,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xmartlabs.XLPagerTabStripTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

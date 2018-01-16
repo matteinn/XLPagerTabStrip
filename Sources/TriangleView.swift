@@ -9,7 +9,7 @@
 import Foundation
 
 public class TriangleView: UIView {
-    
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         

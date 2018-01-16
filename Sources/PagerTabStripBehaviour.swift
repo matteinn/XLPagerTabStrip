@@ -1,7 +1,7 @@
 //  PagerTabStripOptions.swift
 //  XLPagerTabStrip ( https://github.com/xmartlabs/XLPagerTabStrip )
 //
-//  Copyright (c) 2016 Xmartlabs ( http://xmartlabs.com )
+//  Copyright (c) 2017 Xmartlabs ( http://xmartlabs.com )
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,10 +25,10 @@
 import Foundation
 
 public enum PagerTabStripBehaviour {
-    
+
     case common(skipIntermediateViewControllers: Bool)
     case progressive(skipIntermediateViewControllers: Bool, elasticIndicatorLimit: Bool)
-    
+
     public var skipIntermediateViewControllers: Bool {
         switch self {
         case .common(let skipIntermediateViewControllers):
@@ -37,27 +37,22 @@ public enum PagerTabStripBehaviour {
             return skipIntermediateViewControllers
         }
     }
-    
-    
+
     public var isProgressiveIndicator: Bool {
         switch self {
-        case .common(_):
+        case .common:
             return false
-        case .progressive(_, _):
+        case .progressive:
             return true
         }
     }
-    
+
     public var isElasticIndicatorLimit: Bool {
         switch self {
-        case .common(_):
+        case .common:
             return false
         case .progressive(_, let elasticIndicatorLimit):
             return elasticIndicatorLimit
         }
     }
 }
-
-
-
-
