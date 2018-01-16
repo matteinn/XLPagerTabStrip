@@ -66,6 +66,7 @@ public struct ButtonBarPagerTabStripSettings {
             }
         }
         public var buttonBarItemsShouldFillAvailableWidth = true
+        public var buttonBarBounces = true
         // only used if button bar is created programaticaly and not using storyboards or nib files
         public var buttonBarHeight: CGFloat?
     }
@@ -155,6 +156,7 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
         buttonBarView.showsHorizontalScrollIndicator = false
         buttonBarView.backgroundColor = settings.style.buttonBarBackgroundColor ?? buttonBarView.backgroundColor
         buttonBarView.selectedBar.backgroundColor = settings.style.selectedBarBackgroundColor
+        buttonBarView.bounces = settings.style.buttonBarBounces
 
         // TODO buttonBarView.selectedBarVerticalAlignment = settings.style.selectedBarVerticalAlignment
 
