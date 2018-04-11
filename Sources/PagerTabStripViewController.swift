@@ -225,7 +225,7 @@ open class PagerTabStripViewController: UIViewController, UIScrollViewDelegate {
         if virtualPage > viewControllers.count - 1 {
             return viewControllers.count - 1
         }
-        return virtualPage
+        return (virtualPage == -1) ? 0 : virtualPage
     }
 
     open func updateContent() {
