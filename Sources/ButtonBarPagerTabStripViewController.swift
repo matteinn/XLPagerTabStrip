@@ -59,6 +59,7 @@ public struct ButtonBarPagerTabStripSettings {
         public var buttonBarItemKerning: CGFloat?
         public var buttonBarItemLeftRightMargin: CGFloat = 8
         public var buttonBarItemTitleColor: UIColor?
+        public var buttonBarItemVerticalOffsetFromCenter: CGFloat = 0
         @available(*, deprecated: 7.0.0) public var buttonBarItemsShouldFillAvailiableWidth: Bool {
             set {
                 buttonBarItemsShouldFillAvailableWidth = newValue
@@ -342,6 +343,7 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
             cell.label.text = indicatorInfo.title
         }
         
+        cell.labelCenterYConstraint.constant = settings.style.buttonBarItemVerticalOffsetFromCenter
         cell.label.font = settings.style.buttonBarItemFont
         cell.label.textColor = settings.style.buttonBarItemTitleColor ?? cell.label.textColor
         cell.contentView.backgroundColor = settings.style.buttonBarItemBackgroundColor ?? cell.contentView.backgroundColor
