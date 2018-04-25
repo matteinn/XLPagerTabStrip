@@ -60,6 +60,7 @@ public struct ButtonBarPagerTabStripSettings {
         public var buttonBarItemLeftRightMargin: CGFloat = 8
         public var buttonBarItemTitleColor: UIColor?
         public var buttonBarItemVerticalOffsetFromCenter: CGFloat = 0
+        public var buttonBarItemHorizontalOffsetFromCenter: CGFloat = 0
         @available(*, deprecated: 7.0.0) public var buttonBarItemsShouldFillAvailiableWidth: Bool {
             set {
                 buttonBarItemsShouldFillAvailableWidth = newValue
@@ -343,11 +344,13 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
             cell.label.text = indicatorInfo.title
         }
         
+        cell.labelCenterXConstraint.constant = settings.style.buttonBarItemHorizontalOffsetFromCenter
         cell.labelCenterYConstraint.constant = settings.style.buttonBarItemVerticalOffsetFromCenter
         cell.label.font = settings.style.buttonBarItemFont
         cell.label.textColor = settings.style.buttonBarItemTitleColor ?? cell.label.textColor
         cell.contentView.backgroundColor = settings.style.buttonBarItemBackgroundColor ?? cell.contentView.backgroundColor
         cell.backgroundColor = settings.style.buttonBarItemBackgroundColor ?? cell.backgroundColor
+        cell.backgroundColor = (indexPath.item == 0) ? .red : (indexPath.item == 1) ? .green : (indexPath.item == 2) ? .orange : (indexPath.item == 3) ? .cyan : (indexPath.item == 4) ? .brown : (indexPath.item == 5) ? .purple : .green
         if let image = indicatorInfo.image {
             cell.imageView.image = image
         }

@@ -43,6 +43,7 @@
             <connections>
                 <outlet property="imageView" destination="tFG-yJ-6Th" id="Odb-dR-tf4"/>
                 <outlet property="label" destination="s7f-rk-sQl" id="4gU-tb-BMB"/>
+                <outlet property="labelCenterXConstraint" destination="c15-bZ-hPG" id="FEX-0T-j0t"/>
                 <outlet property="labelCenterYConstraint" destination="ZeP-6I-AXE" id="UTV-4E-KZg"/>
             </connections>
             <point key="canvasLocation" x="307" y="541"/>
