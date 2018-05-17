@@ -206,6 +206,7 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
         // selectedBar is resized and its contentOffset/scroll is set correctly (the selected
         // tab/cell may end up either skewed or off screen after a rotation otherwise)
         buttonBarView.moveTo(index: currentIndex, animated: false, swipeDirection: .none, pagerScroll: .scrollOnlyIfOutOfScreen)
+        buttonBarView.selectItem(at: IndexPath(item: currentIndex, section: 0), animated: false, scrollPosition: [])
     }
 
     // MARK: - Public Methods
@@ -334,6 +335,8 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
         let childController = viewControllers[indexPath.item] as! IndicatorInfoProvider // swiftlint:disable:this force_cast
         let indicatorInfo = childController.indicatorInfo(for: self)
 
+        cell.label.text = indicatorInfo.title
+        cell.accessibilityLabel = indicatorInfo.accessibilityLabel
         
         if let kerning = settings.style.buttonBarItemKerning {
             let attributedText = NSMutableAttributedString(string: indicatorInfo.title ?? "")
@@ -368,6 +371,10 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
                 changeCurrentIndex(currentIndex == indexPath.item ? nil : cell, currentIndex == indexPath.item ? cell : nil, false)
             }
         }
+        cell.isAccessibilityElement = true
+        cell.accessibilityLabel = cell.label.text
+        cell.accessibilityTraits |= UIAccessibilityTraitButton
+        cell.accessibilityTraits |= UIAccessibilityTraitHeader
         return cell
     }
 
