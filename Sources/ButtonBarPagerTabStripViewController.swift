@@ -341,7 +341,7 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
         if let kerning = settings.style.buttonBarItemKerning {
             let attributedText = NSMutableAttributedString(string: indicatorInfo.title ?? "")
             let range = NSMakeRange(0, attributedText.length)
-            attributedText.addAttribute(NSAttributedStringKey.kern, value: NSNumber(value: Float(kerning)), range: range)
+            attributedText.addAttribute(NSAttributedString.Key.kern, value: NSNumber(value: Float(kerning)), range: range)
             cell.label.attributedText = attributedText
         } else {
             cell.label.text = indicatorInfo.title
